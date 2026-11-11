@@ -1,0 +1,534 @@
+:root {
+  color-scheme: light;
+  --brand: #8882d1;
+  --brand-strong: #6a62c9;
+  --surface: #f3f0fa;
+  --card: #ffffff;
+  --ink: #0f172a;
+  --muted: #475569;
+  --line: #ddd8f0;
+  font-family: "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background: var(--surface);
+}
+
+a {
+  color: var(--brand-strong);
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  transform: translateY(-150%);
+  background: var(--ink);
+  color: white;
+  padding: 0.5rem 0.75rem;
+  z-index: 10;
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+.kl-shell {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+.kl-page-header,
+.kl-card,
+.kl-site-footer {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+}
+
+.kl-page-header,
+.kl-card {
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.kl-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.kl-nav-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.kl-logo,
+.kl-nav-link,
+.kl-footer-link,
+.kl-btn-primary,
+.kl-btn-secondary {
+  text-decoration: none;
+}
+
+.kl-logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.kl-btn-primary,
+.kl-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.6rem;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid transparent;
+  font: inherit;
+  cursor: pointer;
+}
+
+.kl-btn-primary {
+  background: var(--brand-strong);
+  color: white;
+}
+
+.kl-btn-primary:hover:not(:disabled) {
+  background: #5c55b8;
+}
+
+.kl-btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.kl-btn-secondary {
+  background: white;
+  color: var(--brand-strong);
+  border-color: var(--line);
+}
+
+.kl-page-title {
+  margin: 0.25rem 0;
+  font-size: 2rem;
+}
+
+.kl-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 0;
+  overflow: hidden;
+}
+
+.kl-hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.kl-hero-image {
+  display: block;
+  width: 100%;
+  height: 12.5rem;
+  object-fit: cover;
+  object-position: center;
+}
+
+.kl-eyebrow,
+.kl-hint,
+.kl-page-lead {
+  color: var(--muted);
+}
+
+.kl-search-grid,
+.kl-vehicle-grid,
+.kl-site-footer-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.kl-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+}
+
+.kl-input {
+  font: inherit;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 0.6rem;
+}
+
+.kl-vehicle-grid {
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}
+
+.kl-vehicle-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 0.8rem;
+}
+
+.kl-vehicle-image {
+  display: block;
+  width: 100%;
+  height: 10rem;
+  object-fit: cover;
+  background: #e2e8f0;
+}
+
+.kl-vehicle-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1rem;
+}
+
+.kl-vehicle-card h3 {
+  margin: 0;
+}
+
+.kl-vehicle-body .kl-btn-primary {
+  margin-top: 0.4rem;
+}
+
+.kl-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.kl-trip-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.kl-trip {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+
+.kl-trip-image {
+  display: block;
+  width: 100%;
+  height: 10rem;
+  object-fit: cover;
+  background: #e2e8f0;
+}
+
+.kl-trip-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1.25rem;
+}
+
+.kl-trip-body h2,
+.kl-trip-body p {
+  margin: 0;
+}
+
+.kl-trip-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.kl-badge {
+  font-weight: 700;
+}
+
+.kl-badge-pending {
+  color: #b45309;
+}
+
+.kl-badge-paid {
+  color: #047857;
+}
+
+.kl-badge-cancelled {
+  color: #64748b;
+}
+
+.kl-btn-danger {
+  color: #b91c1c;
+  border-color: #fecaca;
+}
+
+.kl-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.kl-detail-image {
+  display: block;
+  width: 100%;
+  height: 22rem;
+  object-fit: cover;
+  object-position: center;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: #e2e8f0;
+}
+
+.kl-detail-body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem 2rem;
+  align-items: start;
+}
+
+.kl-detail-info h1,
+.kl-detail-info h2,
+.kl-detail-book h2 {
+  margin: 0.85rem 0 0.4rem;
+}
+
+.kl-detail-info h1 {
+  margin-top: 0;
+  font-size: 2rem;
+}
+
+.kl-detail-back {
+  margin-bottom: 0.85rem;
+}
+
+.kl-detail-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+}
+
+.kl-detail-book {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.kl-detail-book h2 {
+  margin-top: 0;
+}
+
+.kl-detail-facts {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+}
+
+.kl-detail-facts div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.kl-detail-facts dd {
+  margin: 0;
+  font-weight: 700;
+}
+
+.kl-detail-book .kl-btn-primary {
+  width: 100%;
+}
+
+.kl-detail-body > app-vehicle-location-map {
+  grid-column: 1 / -1;
+  display: block;
+  width: 100%;
+  min-width: 0;
+}
+
+.kl-location-map {
+  width: 100%;
+}
+
+.kl-location-map h2 {
+  margin: 0 0 0.5rem;
+}
+
+.kl-location-map-frame {
+  height: 16rem;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 0.8rem;
+  background: #e2e8f0;
+}
+
+.kl-location-map-host,
+.kl-location-map-frame .leaflet-container {
+  height: 100%;
+  width: 100%;
+}
+
+.kl-location-map-frame img.leaflet-tile,
+.kl-location-map-frame img.leaflet-marker-icon,
+.kl-location-map-frame img.leaflet-marker-shadow {
+  max-width: none !important;
+  max-height: none !important;
+}
+
+.kl-alert-error,
+.kl-alert-info {
+  padding: 0.75rem 1rem;
+  border-radius: 0.7rem;
+}
+
+.kl-alert-error {
+  background: #fee2e2;
+}
+
+.kl-alert-info {
+  background: #e7e4f6;
+  color: #3f3a78;
+}
+
+.kl-choice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.kl-choice {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.7rem;
+}
+
+.kl-charges {
+  margin: 0;
+}
+
+.kl-charges div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.45rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.kl-charges div:first-child {
+  border-top: 0;
+}
+
+.kl-charges .kl-total {
+  font-weight: 700;
+}
+
+.kl-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.kl-faq-item {
+  border-top: 1px solid var(--line);
+  padding-top: 0.5rem;
+}
+
+.kl-site-footer {
+  padding: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.kl-footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.kl-site-footer-bottom {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+:focus-visible {
+  outline: 3px solid var(--brand-strong);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+
+@media (min-width: 800px) {
+  .kl-hero {
+    grid-template-columns: 2fr 3fr;
+    min-height: 16rem;
+  }
+
+  .kl-hero-copy {
+    padding: 2rem;
+  }
+
+  .kl-hero-image {
+    height: 100%;
+    min-height: 16rem;
+  }
+
+  .kl-trip {
+    flex-direction: row;
+  }
+
+  .kl-trip-image {
+    width: 14rem;
+    height: auto;
+    min-height: 100%;
+  }
+
+  .kl-detail-body {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .kl-search-grid,
+  .kl-site-footer-grid {
+    grid-template-columns: 1.4fr 1fr 1fr auto;
+    align-items: end;
+  }
+
+  .kl-site-footer-grid {
+    grid-template-columns: 2fr 1fr;
+    align-items: start;
+  }
+}

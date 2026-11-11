@@ -1,0 +1,97 @@
+<header class="kl-page-header">
+  <nav class="kl-nav" aria-label="Primary">
+    <app-keyloop-logo />
+    <div class="kl-nav-actions">
+      <a routerLink="/" fragment="faq" class="kl-nav-link">FAQ</a>
+      <a routerLink="/trips" class="kl-btn-secondary">Trips</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main-content" tabindex="-1" class="kl-landing">
+  <section class="kl-card kl-hero" aria-labelledby="hero-heading">
+    <div class="kl-hero-copy">
+      <p class="kl-eyebrow">Australia </p>
+      <h1 id="hero-heading" class="kl-page-title">Find your ride</h1>
+      <p class="kl-page-lead">
+        Search by city and dates, compare daily rates, and book with Stripe Checkout in test mode.
+      </p>
+    </div>
+    <img class="kl-hero-image" src="/assets/vehicles/v1.jpg" alt="" />
+  </section>
+
+  <section class="kl-card" aria-labelledby="search-heading">
+    <h2 id="search-heading" class="kl-section-heading">Where and when?</h2>
+    <p class="kl-hint">Location filters the catalogue. Dates apply when you book.</p>
+    <div class="kl-search-grid">
+      <label class="kl-label" for="landing-pickup-location">
+        Pickup location
+        <input
+          id="landing-pickup-location"
+          class="kl-input"
+          name="location"
+          list="catalog-locations"
+          placeholder="e.g. Sydney"
+          [(ngModel)]="location"
+        />
+      </label>
+      <datalist id="catalog-locations">
+        @for (city of catalogLocations; track city) {
+          <option [value]="city"></option>
+        }
+      </datalist>
+      <label class="kl-label">
+        Pickup date
+        <input class="kl-input" type="date" name="pickupDate" [(ngModel)]="pickupDate" />
+      </label>
+      <label class="kl-label">
+        Return date
+        <input class="kl-input" type="date" name="returnDate" [(ngModel)]="returnDate" />
+      </label>
+      <button type="button" class="kl-btn-primary" [disabled]="loading()" (click)="onSearch()">
+        {{ loading() ? 'Searching…' : 'Search' }}
+      </button>
+    </div>
+  </section>
+
+  @if (loadError()) {
+    <p class="kl-alert-error" role="alert">{{ loadError() }}</p>
+  }
+  @if (searchMessage()) {
+    <p class="kl-alert-info" role="status">{{ searchMessage() }}</p>
+  }
+
+  <section class="kl-card" aria-label="Vehicle search results" [attr.aria-busy]="loading()">
+    @if (resultsHeading()) {
+      <h2 class="kl-section-heading" aria-live="polite">{{ resultsHeading() }}</h2>
+    }
+    @if (loading()) {
+      <p role="status">Loading vehicles…</p>
+    } @else if (vehicles().length === 0) {
+      <p>No vehicles to show. Try another city or clear your search.</p>
+    } @else {
+      <div class="kl-vehicle-grid">
+        @for (v of vehicles(); track v.id) {
+          <article class="kl-vehicle-card">
+            <img class="kl-vehicle-image" [src]="v.imageUrl" [alt]="v.name" />
+            <div class="kl-vehicle-body">
+              <h3 [id]="'vehicle-' + v.id">{{ v.name }}</h3>
+              <p>{{ v.location }}</p>
+              <p>{{ v.dailyPriceUsd | currency: 'USD' }} <span>/ day</span></p>
+              <a
+                class="kl-btn-primary"
+                [routerLink]="['/vehicles', v.id]"
+                [queryParams]="searchQueryParams()"
+                [attr.aria-label]="'View details for ' + v.name"
+              >
+                View details
+              </a>
+            </div>
+          </article>
+        }
+      </div>
+    }
+  </section>
+
+  <app-landing-faq />
+</main>
