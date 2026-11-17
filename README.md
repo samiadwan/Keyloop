@@ -33,3 +33,7 @@ The sibling [`Keyloop`](../Keyloop) repo is the **as-built demonstrator** (Angul
 - Client: `http://localhost:4200`
 
 See reference app [`../Keyloop/README.md`](../Keyloop/README.md). Local docs: [`docs/REQUIREMENTS.md`](docs/REQUIREMENTS.md) (includes [`docs/guide/stripe-test-setup.md`](docs/guide/stripe-test-setup.md)).
+
+## UI References and Project Documentation
+
+[`about/`](about/README.md) is the screen and workflow index for this repository. It describes the Angular routes, the main user journeys, and how the screens relate. [`about/ui-references/`](about/ui-references/README.md) holds screenshots of that flow. Catalogue photos and the logo stay in the client assets folder.
